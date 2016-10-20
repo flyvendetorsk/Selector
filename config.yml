@@ -3,59 +3,105 @@
 #Random disabling
 drop-allowed: false
 
-
-#Du kan velge mellom: KOMMANDO, BUNGEE, INVENTORY
-State: 'INVENTORY'
-
 # Itemet
 
 #Skal spilleren få itemet når de logger inn?
 itemonjoin: true
 
 # Custom item materiale info.
-item: COMPASS
-name: '&9Trylling'
-lore:
-  - '&cDette er en lore'
-  - '&cDette er enda en lore.'
+selectors:
+  compass:
+    slot: 3
+    item: COMPASS
+    name: '&9Trylling'
+    lore:
+      - '&cDette er en lore'
+      - '&cDette er enda en lore.'
+    function:
+      type: INVENTORY
+      variable: meny
+  information:
+    slot: 2
+    item: PAPER
+    name: '&lInformasjon'
+    lore:
+      - '&cDette er en lore'
+      - '&cDette er enda en lore.'
+    function:
+      type: COMMAND
+      variable: informasjon %player%   
+  hei:
+    slot: 1
+    item: COMPASS
+    name: '&9Server velger'
+    lore:
+      - '&cDette er en lore'
+      - '&cDette er enda en lore.'
+    function:
+      type: INVENTORY
+      variable: meny2      
   
-  
-#Kommando innstillinger (Hvis innstillingen er valgt)
-kommandoer-vanilla:
-  - 'op NorgesBesteKoder'
-  - 'op everyone'
-  
-#Bungee innstillinger (Hvis Innstillingen er valgt) 
-kommandoer-bungee:
-  - 'glist'
-  - 'hub'
 
 #Inventory innstillinger (Hvis innstillingen er valgt)
-#Du kan legge inn så mange items du vill (Så lenge inventorien ikke ekploderer)
-inventory-size-rows: 2
-inventory-name: '&c&lTrulsKraft &7- &eMeny'
-inventory:
-  item:
-    slot: 1
-    name: '&1Jordkake'
-    type: DIRT
-    lore:
-      - '&cEn lore' 
-      - '&a2 lores'  
-  item2:
-    slot: 3
-    name: '&5Gresskake'
-    type: GRASS
-    lore:
-      - '&cEn lore' 
-      - '&a2 lores' 
-    command: 'spawn'  
-  item5:
-    slot: 7
-    name: '&6Hub'
-    type: STONE
-    lore:
-      - '&7Klikk for teleportering til hub' 
-      - '&eKlikk da vell'   
-    bungeecord-server: 'hub'
-              
+#Du kan legge inn så mange items du vill
+
+inventories:
+  meny:
+    inventory-size-rows: 2
+    inventory-name: '&c&lTrulsKraft &7- &eMeny'
+    items:
+      item:
+        slot: 1
+        name: '&1Jordkake'
+        type: DIRT
+        lore:
+          - '&cEn lore' 
+          - '&a2 lores'  
+      item2:
+        slot: 3
+        name: '&2&lSurvival'
+        type: GRASS
+        lore:
+          - '&cSender deg til survival' 
+          - '&a2 lores' 
+        function: 
+          type: BUNGEE_TELEPORT
+          variable: survival
+      item5:
+        slot: 7
+        name: '&6Hub'
+        type: STONE
+        lore:
+          - '&7Klikk for teleportering til hub' 
+          - '&eKlikk da vell'   
+        function:
+          type: COMMAND
+          variable: spawn
+  meny2:
+    inventory-size-rows: 4
+    inventory-name: '&c&lTrulsKraft &7- &eServer velger'
+    items:
+      item:
+        slot: 2
+        name: '&1Bedwars'
+        type: DIRT
+        lore:
+          - '&cEn lore' 
+          - '&a2 lores'  
+      item2:
+        slot: 3
+        name: '&2&lSurvival'
+        type: GRASS
+        lore:
+          - '&cSender deg til survival' 
+          - '&a2 lores' 
+        function: 
+          type: BUNGEE_TELEPORT
+          variable: survival
+      item5:
+        slot: 4
+        name: '&6Hub'
+        type: STONE
+        lore:
+          - '&7Klikk for teleportering til hub' 
+          - '&eKlikk da vell'               

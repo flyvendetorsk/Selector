@@ -9,7 +9,7 @@ import api.ConfigAPI;
 
 public class Loader extends JavaPlugin implements PluginMessageListener {
 
-	public static SelectorState selectorstate;
+
 	public ConfigAPI config = ConfigAPI.getInstance();
 
 	public void onEnable() {
@@ -17,7 +17,6 @@ public class Loader extends JavaPlugin implements PluginMessageListener {
 		saveDefaultConfig();
 		config.setup(this);
 
-		selectorstate = SelectorState.valueOf(config.getConfig().getString("State"));
 		Bukkit.getPluginManager().registerEvents(new Selector_Listener(), this);
 		
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
