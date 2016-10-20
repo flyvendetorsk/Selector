@@ -1,0 +1,58 @@
+# Velkommen til konfigurasjonen ;)
+
+#Random disabling
+drop-allowed: false
+
+
+#Du kan velge mellom: KOMMANDO, BUNGEE, INVENTORY
+State: 'INVENTORY'
+
+# Itemet
+
+#Skal spilleren få itemet når de logger inn?
+itemonjoin: true
+
+# Custom item materiale info.
+item: COMPASS
+name: '&9Trylling'
+lore:
+  - '&cDette er en lore'
+  - '&cDette er enda en lore.'
+  
+  
+#Kommando innstillinger (Hvis innstillingen er valgt)
+kommandoer-vanilla:
+  - 'op NorgesBesteKoder'
+  - 'op everyone'
+  
+#Bungee innstillinger (Hvis Innstillingen er valgt) 
+kommandoer-bungee:
+  - 'glist'
+  - 'hub'
+
+#Inventory innstillinger (Hvis innstillingen er valgt)
+#Du kan legge inn så mange items du vill
+inventory-size-rows: 2
+inventory-name: '&c&lTrulsKraft &7- &eMeny'
+inventory:
+  item:
+    slot: 1
+    name: '&1Jordkake'
+    type: DIRT
+    lore:
+      - '&cEn lore' 
+      - '&a2 lores'
+  item2:
+    slot: 3
+    name: '&5Gresskake'
+    type: GRASS
+    lore:
+      - '&cEn lore' 
+      - '&a2 lores'  
+  item5:
+    slot: 7
+    name: '&6Hub'
+    type: STONE
+    lore:
+      - '&7Klikk for teleportering til hub' 
+      - '&eKlikk da vell'            

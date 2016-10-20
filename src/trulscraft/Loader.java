@@ -15,7 +15,7 @@ public class Loader extends JavaPlugin implements PluginMessageListener {
 	public void onEnable() {
 		System.out.println("Aktiverer Selector...");
 		config.setup(this);
-	
+
 		selectorstate = SelectorState.valueOf(config.getConfig().getString("State"));
 		Bukkit.getPluginManager().registerEvents(new Selector_Listener(), this);
 		saveDefaultConfig();

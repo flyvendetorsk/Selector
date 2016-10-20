@@ -3,10 +3,13 @@ package trulscraft;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import api.IsaksApi;
+import net.md_5.bungee.api.ChatColor;
 
 public class Selector_Listener extends IsaksApi implements Listener {
 
@@ -17,6 +20,23 @@ public class Selector_Listener extends IsaksApi implements Listener {
 			new Selector_Handler().giveCustomItem(e.getPlayer());
 		}
 
+	}
+
+	@EventHandler
+	public void itemDropEvent(PlayerDropItemEvent e) {
+		if (!config.getConfig().getBoolean("drop-allowed")) {
+			e.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void inventory(InventoryClickEvent e) {
+		if (e.getInventory().getName() != null) {
+			if (e.getInventory().getName().equalsIgnoreCase(
+					ChatColor.translateAlternateColorCodes('&', config.getConfig().getString("inventory-name")))) {
+				e.setCancelled(true);
+			}
+		}
 	}
 
 	@EventHandler
