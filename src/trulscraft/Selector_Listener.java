@@ -48,17 +48,17 @@ public class Selector_Listener extends IsaksApi implements Listener {
 					for (String key : config.getConfig().getConfigurationSection("inventory").getKeys(false)) {
 						if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.translateAlternateColorCodes(
 								'&', config.getConfig().getString("inventory." + key + ".name")))) {
-							Bukkit.broadcastMessage("debug");
+					
 							if (config.getConfig().get("inventory." + key + ".bungeecord-server") != null) {
 								ByteArrayDataOutput out = ByteStreams.newDataOutput();
 								out.writeUTF("Connect");
 								out.writeUTF(config.getConfig().getString("inventory." + key + ".bungeecord-server"));
 								p.sendPluginMessage(Bukkit.getPluginManager().getPlugin("Selector"), "BungeeCord",
 										out.toByteArray());
-								Bukkit.broadcastMessage("debug2");
+							
 							} else if (config.getConfig().get("inventory." + key + ".command") != null) {
 								p.performCommand(config.getConfig().getString("inventory." + key + ".command"));
-								Bukkit.broadcastMessage("debug3");
+							
 							}
 						}
 					}
