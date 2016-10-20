@@ -1,0 +1,36 @@
+selectors:
+    compass:
+        material: COMPASS
+        displayname: "&4&lServervelger"
+        function:
+            type: INVENTORY
+            variable: serverchooser
+    information:
+        material: PAPER
+        displayname: "&lInformasjon"
+        function:
+            type: NORMAL_COMMAND
+            variable: /informasjon %player%
+inventories:
+    serverchooser:
+        rows: 3
+        displayname: "&4&lVelg en server!"
+        items:
+            1:
+                material: GRASS
+                displayname: "&2Survival"
+                lore:
+                - "Gå til survival!"
+                spot: 0
+                function:
+                    type: BUNGEE_COMMAND
+                    variable: /survival
+            2:
+                material: DIAMOND_SWORD
+                displayname: "&cPvP"
+                lore:
+                - "Gå til PvP!"
+                spot: 1
+                function: 
+                    type: NORMAL_COMMAND
+                    variable: /spawn
