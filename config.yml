@@ -31,7 +31,7 @@ kommandoer-bungee:
   - 'hub'
 
 #Inventory innstillinger (Hvis innstillingen er valgt)
-#Du kan legge inn så mange items du vill
+#Du kan legge inn så mange items du vill (Så lenge inventorien ikke ekploderer)
 inventory-size-rows: 2
 inventory-name: '&c&lTrulsKraft &7- &eMeny'
 inventory:
@@ -41,18 +41,21 @@ inventory:
     type: DIRT
     lore:
       - '&cEn lore' 
-      - '&a2 lores'
+      - '&a2 lores'  
   item2:
     slot: 3
     name: '&5Gresskake'
     type: GRASS
     lore:
       - '&cEn lore' 
-      - '&a2 lores'  
+      - '&a2 lores' 
+    command: 'spawn'  
   item5:
     slot: 7
     name: '&6Hub'
     type: STONE
     lore:
       - '&7Klikk for teleportering til hub' 
-      - '&eKlikk da vell'            
+      - '&eKlikk da vell'   
+    bungeecord-server: 'hub'
+              

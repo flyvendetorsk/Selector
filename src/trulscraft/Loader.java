@@ -14,11 +14,12 @@ public class Loader extends JavaPlugin implements PluginMessageListener {
 
 	public void onEnable() {
 		System.out.println("Aktiverer Selector...");
+		saveDefaultConfig();
 		config.setup(this);
 
 		selectorstate = SelectorState.valueOf(config.getConfig().getString("State"));
 		Bukkit.getPluginManager().registerEvents(new Selector_Listener(), this);
-		saveDefaultConfig();
+		
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 

@@ -1,5 +1,6 @@
 package trulscraft;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -7,6 +8,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
+
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 
 import api.IsaksApi;
 import net.md_5.bungee.api.ChatColor;
@@ -35,6 +40,29 @@ public class Selector_Listener extends IsaksApi implements Listener {
 			if (e.getInventory().getName().equalsIgnoreCase(
 					ChatColor.translateAlternateColorCodes('&', config.getConfig().getString("inventory-name")))) {
 				e.setCancelled(true);
+				ItemStack item;
+				Player p = Bukkit.getPlayer(e.getWhoClicked().getName());
+				if (e.getSlot() != -999 && (item = e.getCurrentItem()) != null && item.hasItemMeta()
+						&& item.getItemMeta().hasDisplayName()) {
+
+					for (String key : config.getConfig().getConfigurationSection("inventory").getKeys(false)) {
+						if (item.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.translateAlternateColorCodes(
+								'&', config.getConfig().getString("inventory." + key + ".name")))) {
+							Bukkit.broadcastMessage("debug");
+							if (config.getConfig().get("inventory." + key + ".bungeecord-server") != null) {
+								ByteArrayDataOutput out = ByteStreams.newDataOutput();
+								out.writeUTF("Connect");
+								out.writeUTF(config.getConfig().getString("inventory." + key + ".bungeecord-server"));
+								p.sendPluginMessage(Bukkit.getPluginManager().getPlugin("Selector"), "BungeeCord",
+										out.toByteArray());
+								Bukkit.broadcastMessage("debug2");
+							} else if (config.getConfig().get("inventory." + key + ".command") != null) {
+								p.performCommand(config.getConfig().getString("inventory." + key + ".command"));
+								Bukkit.broadcastMessage("debug3");
+							}
+						}
+					}
+				}
 			}
 		}
 	}
